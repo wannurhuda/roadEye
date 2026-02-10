@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const PothoAlertApp());
+  runApp(const RoadEyeApp());
 }
 
-class PothoAlertApp extends StatelessWidget {
-  const PothoAlertApp({super.key});
+class RoadEyeApp extends StatelessWidget {
+  const RoadEyeApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PothoAlert',
+      title: 'RoadEyeApp',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PothoAlert'),
+        title: const Text('RoadEyeApp'),
         backgroundColor: Colors.blue,
       ),
       body: const Center(
