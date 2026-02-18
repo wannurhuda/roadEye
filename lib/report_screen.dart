@@ -4,6 +4,7 @@ import 'package:geolocator/geolocator.dart';
 import 'dart:io';
 import 'gemini_service.dart';
 import 'firestore_service.dart';
+import 'notification_service.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});
@@ -18,6 +19,21 @@ class _ReportScreenState extends State<ReportScreen> {
   bool _isAnalyzing = false;
   Map<String, dynamic>? _analysisResult;
   Position? _currentPosition;
+
+  String _getSeverityExplanation(String severity) {
+    switch (severity.toUpperCase()) {
+      case 'CRITICAL':
+        return '🔴 Immediate danger — urgent repair needed';
+      case 'MEDIUM':
+        return '🟠 Moderate damage — repair within 1 week';
+      case 'LOW':
+        return '🟡 Minor damage — monitor and repair soon';
+      case 'NONE':
+        return '🟢 No damage detected — road looks good';
+      default:
+        return '⚪ Unable to classify damage';
+    }
+  }
 
   // Severity colors
   Color get _severityColor {
@@ -116,12 +132,13 @@ class _ReportScreenState extends State<ReportScreen> {
 
     if (_currentPosition == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not get location. Please try again.')),
+        const SnackBar(
+          content: Text('Could not get location. Please try again.'),
+        ),
       );
       return;
     }
 
-    // Show loading
     setState(() => _isAnalyzing = true);
 
     final reportId = await FirestoreService.saveReport(
@@ -137,6 +154,20 @@ class _ReportScreenState extends State<ReportScreen> {
     setState(() => _isAnalyzing = false);
 
     if (reportId != null) {
+      // Show critical alert if severity is CRITICAL
+      final severity = _analysisResult!['severity'] ?? '';
+      if (severity.toUpperCase() == 'CRITICAL' && mounted) {
+        NotificationService.showCriticalAlert(
+          context: context,
+          description: _analysisResult!['description'] ?? '',
+          coordinates:
+          '${_currentPosition!.latitude.toStringAsFixed(4)}, '
+              '${_currentPosition!.longitude.toStringAsFixed(4)}',
+        );
+        // Small delay so user sees the alert before navigating back
+        await Future.delayed(const Duration(seconds: 1));
+      }
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -144,7 +175,7 @@ class _ReportScreenState extends State<ReportScreen> {
             backgroundColor: Colors.green,
           ),
         );
-        Navigator.pop(context);  // Go back to map
+        Navigator.pop(context);
       }
     } else {
       if (mounted) {
@@ -284,6 +315,15 @@ class _ReportScreenState extends State<ReportScreen> {
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        _getSeverityExplanation(_analysisResult!['severity'] ?? ''),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey[600],
+                          fontStyle: FontStyle.italic,
+                        ),
                       ),
                       const SizedBox(height: 12),
 

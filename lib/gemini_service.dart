@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class GeminiService {
-  static String get _apiKey => dotenv.env['GEMINI_API_KEY'] ?? '';;
+  static String get _apiKey => dotenv.env['GEMINI_API_KEY'] ?? '';
   static const String _model = 'gemini-2.0-flash-lite';
 
   static Future<Map<String, dynamic>> analyzePothole(File imageFile) async {
