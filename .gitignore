@@ -44,6 +44,7 @@
    .env
    *.env
    api_keys.txt
+   google-services.json
    
    # IDE
    .idea/
