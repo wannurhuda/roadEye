@@ -6,6 +6,7 @@
    .pub-cache/
    .pub/
    build/
+   **/flutter_assets/.env
    
    # Android
    **/android/**/gradle-wrapper.jar
@@ -62,3 +63,5 @@
   *.apk
   *.so
   *.jar
+  *.aab
+  *.ipa
