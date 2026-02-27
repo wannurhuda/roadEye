@@ -69,3 +69,7 @@
    # Firebase credentials - NEVER COMMIT
   android/app/google-services.json
   ios/Runner/GoogleService-Info.plist
+
+  # Local configuration
+  android/local.properties
+  **/local.properties
