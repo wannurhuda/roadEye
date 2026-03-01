@@ -52,15 +52,16 @@ Existing government apps like Aduan Komuniti rely on manual classification, have
 - Eliminates human classification errors
 
 ### 2️⃣ Real-Time Crowdsourced Mapping
-- All users see all reports instantly
 - Color-coded severity visualization (🟡🟠🔴)
-- Statistics dashboard for data-driven decisions
-- Firebase real-time sync (<2 second latency)
+- Reports sync to map automatically via Firebase
+- Statistics dashboard shows total reports and severity breakdown
+- Interactive map with tap-to-view details
 
-### 3️⃣ Immediate Driver Value
-- Drivers avoid hazards before hitting them
-- Push notifications for critical potholes nearby
-- Creates virtuous cycle: more reports = safer routes
+### 3️⃣ Comprehensive Reporting System
+- Complete history of all submissions in list view
+- Severity explanations for user understanding
+- Location coordinates for each report
+- Status tracking for submitted reports
 
 **We're not replacing government systems - we're revolutionizing them with AI while providing immediate value to drivers.**
 
@@ -76,8 +77,7 @@ Existing government apps like Aduan Komuniti rely on manual classification, have
 ✅ **Safer Infrastructure**: Real-time hazard awareness prevents accidents  
 ✅ **Data-Driven Planning**: AI classification enables prioritized repairs  
 ✅ **Citizen Engagement**: Crowdsourcing empowers communities  
-✅ **Resilient Systems**: Cloud-based architecture ensures 24/7 availability  
-✅ **Inclusive Access**: Free mobile app available to all drivers
+✅ **Resilient Systems**: Cloud-based architecture ensures 24/7 availability
 
 ---
 
@@ -279,34 +279,23 @@ flutter run --release
 
 ## 🏆 Competitive Advantage
 
-### **vs. Existing Solutions (Aduan Komuniti, JKR Apps)**
+### **RoadEye vs. Existing Solutions (Aduan Komuniti, JKR Apps)**
 
 | Feature | Government Apps | RoadEye |
 |---------|----------------|---------|
 | **Classification** | ❌ Manual (user types) | ✅ AI-powered (Gemini) |
 | **Data Quality** | ❌ Inconsistent | ✅ 90%+ confidence |
-| **Driver Awareness** | ❌ None | ✅ Real-time map |
 | **Response Time** | ❌ Days | ✅ Instant |
 | **Tech Stack** | ❌ Basic | ✅ Google Cloud |
 | **Scalability** | ❌ Limited | ✅ Nationwide ready |
-| **Open Data** | ❌ Closed | ✅ Crowdsourced |
 
 ### **Our Unique Value Propositions**
 
 1. **Scientific Classification**: Gemini AI provides objective, consistent severity ratings
 2. **Dual Beneficiaries**: Helps both drivers (avoid hazards) and councils (prioritize repairs)
 3. **Modern Architecture**: Built on Google Cloud for automatic scaling
-4. **Real-time Intelligence**: Crowdsourced data creates network effects
 
 ---
-
-## 🔮 Scalability & Future Plans
-
-### **Current Architecture Supports**
-
-✅ **Geographic Scale**: Nationwide deployment with zero code changes  
-✅ **User Scale**: Thousands of concurrent users via Firebase  
-✅ **Data Scale**: Millions of reports with automatic indexing
 
 ### **Future Enhancements (Post-Hackathon)**
 
@@ -398,15 +387,15 @@ build/
 - GitHub: [@wannurhuda](https://github.com/wannurhuda)
 
 **👤 Intan Ellya Aleaza binti Mohamad Nizam**
-- Role: UI/UX Design, User Testing
+- Role: UI/UX Design, Presentation
 - University: Universiti Teknologi PETRONAS
 
 **👤 Qurratu Nur Fayyadhah binti Ahmad Mawaridi**
-- Role: Documentation, Presentation
+- Role: Documentation, User Testing
 - University: Universiti Teknologi PETRONAS
 
 **👤 Puteri Nurin Syahirah binti Mahazan**
-- Role: Quality Assurance, Testing
+- Role: Presentation, User Testing
 - University: Universiti Teknologi PETRONAS
 
 ---
