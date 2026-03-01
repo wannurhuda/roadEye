@@ -58,8 +58,6 @@
    .DS_Store
 
    # Build outputs - DO NOT COMMIT
-    build/
-   .dart_tool/
   *.apk
   *.so
   *.jar
